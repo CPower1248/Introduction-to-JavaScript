@@ -8,8 +8,9 @@ if (votingAge > 18) {
 
 //Task b: declare a variable and then use a conditional to change the value of that variable based on the value assigned to a second variable (no function required)
 var firstVar = 2;
+var secondVar = 3;
 if (firstVar === 2) {
-    firstVar = firstVar + 1;
+    firstVar = firstVar + secondVar;
 } else {
     console.log("ERROR");
 }
@@ -69,13 +70,23 @@ const feedingReq = (age, weight) => {
             return weight * .04
         } else if (weight >= 11 && weight <= 15) {
             return weight * .03
-        } else if (weight >15) {
+        } else if (weight > 15) {
             return weight * .02
         } else {
-            console.log("ERROR")
+            console.log("ERROR");
         }
     }
-    if (age < 1) {}
+    if (age < 1) {
+        if (age < .33) {
+            return weight * .1
+        } else if (age < .58) {
+            return weight * .05
+        } else if (age < 1) {
+            return weight * .04
+        } else {
+            console.log("ERROR");
+        }
+    }
 }
 
 console.log(feedingReq(1, 15))
@@ -87,10 +98,54 @@ console.log(feedingReq(1, 15))
 // it should return you won or you lost based on the rules of the game (you may need to look up the rules if you have not played before)
 // use math.random to determine the computers choice 
 // hint while you can complete this with only conditionals based on strings it may help to equate choice to a number 
+let yourChoice = "scissors";
+console.log(yourChoice);
 
+let getComChoice = () => {
+    var x = Math.floor(Math.random() * 3);
+    switch (x) {
+        case 0:
+            return "rock";
+            break;
+        case 1:
+            return "scissors";
+            break;
+        case 2:
+            return "paper";
+            break;
+        default:
+            console.log("ERROR");
+            break;
+    }
+}
+var comChoice = getComChoice();
+console.log(comChoice);
 
+let playGame = (yourChoice, comChoice) => {
+    if (yourChoice === comChoice) {
+        return "It's a tie"
+    } else if (yourChoice === "rock") {
+        if (comChoice === "scissors") {
+            return "You win"
+        } else {
+            return "You lose"
+        }
+    } else if (yourChoice === "scissors") {
+        if (comChoice === "rock") {
+            return "You lose"
+        } else {
+            return "You win"
+        }
+    } else if (yourChoice === "paper") {
+        if (comChoice === "rock") {
+            return "You win"
+        } else {
+            return "You lose"
+        }
+    }
+}
 
-
+console.log(playGame(yourChoice, comChoice))
 
 /************************************************************** Task 5 **************************************************************/
 //Metric Converter
@@ -120,7 +175,7 @@ console.log(convertToCM(5))
 function annoyingSong(num) {
     for (let i = num; i >= 1; i--) {
         let num2 = num - 1;
-        console.log(num + " of soda on the wall, " + num + " bottles of soda, take one down pass it around " + num2 + " bottles of soda on the wall");
+        console.log(`${num} bottles of soda on the wall, ${num} bottles of soda, take one down pass it around ${num2} bottles of soda on the wall`);
         num = num2;
     }
 }
@@ -146,7 +201,7 @@ function gradeCalc(num) {
         console.log("C");
     } else if (num >= 60 && num < 70) {
         console.log("D");
-    } else if (num < 60) {
+    } else {
         console.log("F");
     }
 }

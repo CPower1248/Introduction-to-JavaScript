@@ -1,12 +1,13 @@
 /************************************************************** Task 1: Warm-up! **************************************************************/
 //Task a: declare a variable called votingAge, console log true if age > 18 (no function required)
-var votingAge = 20;
 
+var votingAge = 20;
 if (votingAge > 18) {
     console.log("true");
 }
 
 //Task b: declare a variable and then use a conditional to change the value of that variable based on the value assigned to a second variable (no function required)
+
 var firstVar = 2;
 var secondVar = 3;
 if (firstVar === 2) {
@@ -14,36 +15,28 @@ if (firstVar === 2) {
 } else {
     console.log("ERROR");
 }
-
 console.log(firstVar);
 
-
 //Task c: Convert string ("1999") to integer (1999)  (no function required) // hint look up the Number method
-let string = "1999";
 
+let string = "1999";
 console.log(Number(string));
 
-
-
-
 //Task d: Write a function to multiply a*b 
+
 let product = (a, b) => {
     return a * b
 }
-
 console.log(product(2, 3));
-
 
 /************************************************************** Task 2 **************************************************************/
 //Age in Dog years
 //write a function that takes your age and returns it to you in dog years - they say that 1 human year is equal to seven dog years 
+
 let dogYears = myAge => {
     return myAge * 7
 }
-
 console.log(dogYears(29));
-
-
 
 /************************************************************** Task 3 **************************************************************/
 //Dog feeder 
@@ -62,6 +55,7 @@ console.log(dogYears(29));
 // 7 - 12 months 4% of their body weight
 
 // when you are finished invoke your function with the weight of 15 lbs and the age of 1 year - if your calculations are correct your result should be 0.44999999999999996
+
 const feedingReq = (age, weight) => {
     if (age >= 1) {
         if (weight <= 5) {
@@ -88,9 +82,7 @@ const feedingReq = (age, weight) => {
         }
     }
 }
-
 console.log(feedingReq(1, 15))
-
 
 /************************************************************** Task 4 **************************************************************/
 // Rock, Paper, Sissors
@@ -98,74 +90,76 @@ console.log(feedingReq(1, 15))
 // it should return you won or you lost based on the rules of the game (you may need to look up the rules if you have not played before)
 // use math.random to determine the computers choice 
 // hint while you can complete this with only conditionals based on strings it may help to equate choice to a number 
-let yourChoice = "scissors";
-console.log(yourChoice);
 
-let getComChoice = () => {
-    var x = Math.floor(Math.random() * 3);
-    switch (x) {
+//-- Get User Input
+let getUserInput = (userInputFunc) => {
+    return userInputFunc
+}
+//-- Get Com Input
+let getComInput = () => {
+    comInputFunc = Math.floor(Math.random() * 3);
+    switch (comInputFunc) {
         case 0:
-            return "rock";
-            break;
+        return "rock";
+        break;
         case 1:
-            return "scissors";
-            break;
+        return "paper";
+        break;
         case 2:
-            return "paper";
-            break;
-        default:
-            console.log("ERROR");
-            break;
+        return "scissors";
+        break;
     }
 }
-var comChoice = getComChoice();
-console.log(comChoice);
-
-let playGame = (yourChoice, comChoice) => {
-    if (yourChoice === comChoice) {
-        return "It's a tie"
-    } else if (yourChoice === "rock") {
-        if (comChoice === "scissors") {
-            return "You win"
+//-- Get Winner
+let getWinner = (userInput, comInput) => {
+    if (userInput === comInput) {
+        return "It's a tie..."
+    } else if (userInput === "rock") {
+        if (comInput === "paper") {
+        return "Com won!"
         } else {
-            return "You lose"
+        return "You won!"
         }
-    } else if (yourChoice === "scissors") {
-        if (comChoice === "rock") {
-            return "You lose"
+    } else if (userInput === "paper") {
+        if (comInput === "rock") {
+        return "You won!"
         } else {
-            return "You win"
+        return "Com won!"
         }
-    } else if (yourChoice === "paper") {
-        if (comChoice === "rock") {
-            return "You win"
+    } else {
+        if (comInput === "rock") {
+        return "Com won!"
         } else {
-            return "You lose"
+        return "You won!"
         }
     }
 }
-
-console.log(playGame(yourChoice, comChoice))
-
+//-- Play Game
+let playGame = (choice) => {
+    let userInput = getUserInput(choice);
+    let comInput = getComInput();
+    let winner = getWinner(userInput, comInput);
+    console.log(`Your move: ${userInput}`);
+    console.log(`Coms move: ${comInput}`);
+    console.log(winner);
+}
+playGame("paper")
+  
 /************************************************************** Task 5 **************************************************************/
 //Metric Converter
 //a. KM to Miles - should take the number of kilometers and convert it to the equal number of miles
+
 let convertToMiles = km => {
     return km * 0.621371
 }
-
 console.log(convertToMiles(5))
 
-
 //b. Feet to CM - should take the number of feet and convert it to the equal number of centimeters
+
 let convertToCM = feet => {
     return feet * 30.48
 }
-
 console.log(convertToCM(5))
-
-
-
 
 /************************************************************** Task 6 **************************************************************/
 // 99 bottles of soda on the wall
@@ -179,10 +173,7 @@ function annoyingSong(num) {
         num = num2;
     }
 }
-
 annoyingSong(5)
-
-
 
 /************************************************************** Task 7 **************************************************************/
 //Grade Calculator
@@ -192,6 +183,7 @@ annoyingSong(5)
 //70s should be Cs 
 //60s should be D 
 //and anything below 60 should be F
+
 function gradeCalc(num) {
     if (num >= 90) {
         console.log("A");
@@ -205,9 +197,7 @@ function gradeCalc(num) {
         console.log("F");
     }
 }
-
 gradeCalc(100)
-  
 
 /************************************************************** Stretch **************************************************************/
 //Create a function that counts the number of vowels within a string. It should handle both capitalized and uncapitalized vowels.
